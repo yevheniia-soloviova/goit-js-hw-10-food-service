@@ -1,51 +1,50 @@
 import menuItemTpl from "./templates/menuItems.hbs"
 import dishes from "./menu.json"
 
-const menuItemMarkup = createMenuItemMarkup(dishes);
 
-const galleryList = document.querySelector('.js-menu');
 
-const ingredientsList = document.querySelector('.tag-list');
 
-galleryList.insertAdjacentHTML("beforeend", menuItemMarkup);
-
-function createMenuItemMarkup(dishes) {
- 
-  return dishes.map(menuItemTpl).join("");
-};
-const bodyEl = document.querySelector('body');
-const themeAdjusterCheckboxEl = document.querySelector('.theme-switch__toggle');
-themeAdjusterCheckboxEl.addEventListener('change', onThemeChange);
-
-const theme = {
+const dishesListRef = document.querySelector(".js-menu");
+const switchRef = document.querySelector("#theme-switch-toggle");
+const bodyRef = document.querySelector("body");
+const Theme = {
   LIGHT: 'light-theme',
   DARK: 'dark-theme',
 };
 
-function onThemeChange(evt) {
-  const currentTheme = evt.currentTarget.checked ? 'dark-theme' : 'light-theme';
-  localStorage.setItem('pageTheme', currentTheme);
-  const savedTheme = localStorage.getItem('pageTheme');
-  console.log(savedTheme);
-  if (savedTheme === theme.LIGHT) {
-    bodyEl.classList.remove(theme.DARK);
-    bodyEl.classList.add(theme.LIGHT);
-  } else {
-    bodyEl.classList.remove(theme.LIGHT);
-    bodyEl.classList.add(theme.DARK);
-  }
+
+const markup = menuItemTpl(dishes)
+
+
+dishesListRef.insertAdjacentHTML("beforeend", markup)
+
+
+switchRef.addEventListener("change", changeTheme)
+
+
+function changeTheme() {
+  if (bodyRef.classList.contains(Theme.LIGHT)) {
+    bodyRef.classList.remove(Theme.LIGHT)
+    bodyRef.classList.add(Theme.DARK)
+    localStorage.setItem("theme", Theme.DARK)
+  } else if (bodyRef.classList.contains(Theme.DARK)) {
+    bodyRef.classList.remove(Theme.DARK)
+    bodyRef.classList.add(Theme.LIGHT)
+    localStorage.setItem("theme", Theme.LIGHT)
+  } 
 }
 
-onLocalStorageChange();
-function onLocalStorageChange() {
-if (
-    localStorage.getItem('pageTheme') === null ||
-    localStorage.getItem('pageTheme') === 'light-theme'
-  ) {
-    bodyEl.classList.add(theme.LIGHT);
-    // themeAdjusterCheckboxEl.checked = false;
-  } else {
-    bodyEl.classList.add(theme.DARK);
-    themeAdjusterCheckboxEl.checked = true;
+
+populateSwitch()
+function populateSwitch() { 
+    const chosenTheme = localStorage.getItem("theme")
+  if (chosenTheme) {
+    if (chosenTheme === Theme.DARK) {
+      bodyRef.classList.add(Theme.DARK)
+      switchRef.checked = true;
+    } else if (chosenTheme === Theme.LIGHT) {
+      bodyRef.classList.add(Theme.LIGHT)
+      switchRef.checked = false;
+    }
+  } else { bodyRef.classList.add(Theme.LIGHT)}
   }
-}
