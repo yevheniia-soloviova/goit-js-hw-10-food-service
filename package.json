@@ -1,23 +1,30 @@
 {
-  "name": "goit-js-hw-10-food-service",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/yevheniia-soloviova/goit-js-hw-10-food-service.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/yevheniia-soloviova/goit-js-hw-10-food-service/issues"
-  },
-  "homepage": "https://github.com/yevheniia-soloviova/goit-js-hw-10-food-service#readme",
-  "dependencies": {
-    "gh-pages": "^3.1.0"
-  }
-}
+	  "name": "y",
+	  "version": "1.0.0",
+	  "description": "homework #10 service-food",
+	  "main": "index.js",
+	  "scripts": {
+	    "dev": "parcel src/index.html",
+	    "build": "parcel build src/index.html --public-url .",
+	    "deploy": "gh-pages -d dist",
+	    "predeploy": "npm run build"
+	  },
+	  "repository": {
+	    "type": "git",
+	    "url": "git+https://github.com/yevheniia-soloviova/goit-js-hw-10-food-service.git/"
+	  },
+	  "author": "yevheniia-soloviova",
+	  "license": "ISC",
+	  "bugs": {
+	    "url": "https://github.com/yevheniia-soloviova/goit-js-hw-10-food-service/issues"
+	  },
+	  "homepage": "https://yevheniia-soloviova.github.io/goit-js-hw-10-food-service/",
+	  "devDependencies": {
+	    "gh-pages": "^3.1.0",
+	    "parcel-bundler": "^1.12.4",
+	    "parcel-plugin-handlebars-precompile": "^1.0.2",
+	    "parcel-plugin-nuke-dist": "^1.0.1"
+	  },
+	  "dependencies": {}
+	}
+
