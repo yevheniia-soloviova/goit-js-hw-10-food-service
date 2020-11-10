@@ -2,16 +2,15 @@ import menuItemTpl from "./templates/menuItems.hbs"
 import dishes from "./menu.json"
 
 const menuItemMarkup = createMenuItemMarkup(dishes);
-// Создаем переменную, в которую записываем результат вызова ф-и
-// которая создает разметку, и передаем в нее список блюд.
+
 const galleryList = document.querySelector('.js-menu');
-// console.log(galaryList);
+
 const ingredientsList = document.querySelector('.tag-list');
 
 galleryList.insertAdjacentHTML("beforeend", menuItemMarkup);
-// вставляем
+
 function createMenuItemMarkup(dishes) {
-  //   return dishes.map((dish) => menuItemTpl(dish)).join("");
+ 
   return dishes.map(menuItemTpl).join("");
 };
 const bodyEl = document.querySelector('body');
