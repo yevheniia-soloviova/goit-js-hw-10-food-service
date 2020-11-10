@@ -1,16 +1,20 @@
-{{#each this}}
 <li class="menu__item">
     <article class="card">
         <img src="{{image}}" alt="{{name}}" class="card__image" />
         <div class="card__content">
-            <h2 class="card__name">{{name}}</h2>
+            <h2 class="{{ name }}">Картофель, запеченный в мундире</h2>
             <p class="card__price">
                 <i class="material-icons"> monetization_on </i>
                 {{price}} кредитов
             </p>
 
-            <p class="card__descr">
-                {{description}}
+            <p class="{{description}}">
+                Ароматный, сытный, шипящий домашний картофель, фаршированный
+                сметанно-беконной начинкой, — это очень простой и очень эффектный способ
+                накормить большое количество человек, практически не потратив на готовку
+                ни сил, ни времени. Обычную картошку при желании тут можно заменить на
+                сладкий батат, а в начинку добавить, к примеру, кукурузу или сладкий
+                красный перец.
             </p>
 
             <ul class="tag-list">
@@ -26,4 +30,3 @@
         </button>
     </article>
 </li>
-{{/each}}
